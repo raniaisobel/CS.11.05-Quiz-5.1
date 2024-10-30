@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
 
     /**
@@ -8,9 +10,16 @@ public class Main {
      * zip(myArray1, myArray2) → {1,3,5,7,9,2,4,6,8,10,12,14,16}
      */
     public static int[] combine(int[] array1, int[] array2) {
-
-        return null;
-
+       int length1 = array1.length;
+       int length2 = array2.length;
+        int[] result = new int[length1+length2];
+        for (int i=0;i<length1;i++){
+            result[i] = array1[i];
+        }
+        for (int i=0;i<length2;i++){
+            result[length2+i] = array2[i];
+        }
+        return result;
     }
 
     /**
@@ -21,9 +30,12 @@ public class Main {
      * zip(myArray1, myArray2) → {1,2,3,4,5,6,7,8,9,10}
      */
     public static int[] zip(int[] array1, int[] array2) {
-
-        return null;
-
+        int [] result = new int[array1.length*2];
+        for (int i=0;i<array1.length;i++){
+            result[i*2] = array1[i];
+            result[i*2+1] = array2[i];
+        }
+        return result;
     }
 
     /**
@@ -34,9 +46,11 @@ public class Main {
      * product(myArray1, myArray2) → {2,12,30,56,90}
      */
     public static int[] product(int[] array1, int[] array2) {
-
-        return null;
-
+        int[] result = new int[array1.length];
+        for (int i=0;i< array1.length;i++){
+            result[i] = array1[i] * array2[i];
+        }
+        return result;
     }
 
     /**
@@ -56,15 +70,25 @@ public class Main {
      * capitalCount(words) → {1, 2, 2, 0}
      */
     public static int[] capitalCount(String[] words) {
-
-        return null;
+        int[] result = new int[words.length];
+        for (int i=0;i<words.length;i++){
+            result[i] = countCapitalLetters(words[i]);
+        }
+        return result;
 
     }
 
     public static int countCapitalLetters(String word) {
-
-        return 0;
-
+        int count = 0;
+        for (int i = 0; i < word.length(); i++) {
+            char atPos = word.charAt(i);
+            if (Character.isAlphabetic(atPos) == true) {
+                int asciiValue = (int) atPos;
+                if (asciiValue >= 65 && asciiValue <= 90) {
+                    count = count + 1;
+                }
+            }
+        }
+        return count;
     }
-
 }
